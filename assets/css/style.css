@@ -3,3 +3,7 @@
     margin: 0 auto;
     text-align: center;
 }
+
+.modal-body{
+    text-align: left;
+}
