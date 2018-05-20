@@ -33,5 +33,18 @@ $(document).ready(function() {
     initialize();
     generateCrystalNums(randomNumber);
 
+    $(".crystal-group").on("click", "#crystal-one", function (){
+        score += crystOne;
+        $(scoreDisplay).text(score);
+    }).on("click", "#crystal-two", function (){
+        score += crystTwo;
+        $(scoreDisplay).text(score);
+    }).on("click", "#crystal-three", function (){
+        score += crystThree;
+        $(scoreDisplay).text(score);
+    }).on("click", "#crystal-four", function (){
+        score += crystFour;
+        $(scoreDisplay).text(score);
+    });
 
 });
