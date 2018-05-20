@@ -13,14 +13,6 @@ var userWinsDisplay = $("#wins");
 var userLossesDisplay = $("#losses");
 var scoreDisplay = $("#score");
 
-function initialize(){
-    randomNumber = Math.floor(Math.random() * 100);
-    $(randomNumberDisplay).text(randomNumber);
-    $(userLossesDisplay).text(0);
-    $(userWinsDisplay).text(0);
-    $(scoreDisplay).text(0);
-}
-
 function generateCrystalNums(num) {
     crystOne = Math.ceil(num / (Math.random() * 10));
     crystTwo = Math.ceil(num / (Math.random() * 10));
@@ -28,23 +20,51 @@ function generateCrystalNums(num) {
     crystFour = Math.ceil(num / (Math.random() * 10));
 }
 
-$(document).ready(function() {
+function initialize(){
+    score = 0;
+    randomNumber = 0;
 
-    initialize();
+    crystOne = 0;
+    crystTwo = 0;
+    crystThree = 0;
+    crystFour = 0;
+
+    randomNumber = Math.floor(Math.random() * 100);
     generateCrystalNums(randomNumber);
+    $(randomNumberDisplay).text(randomNumber);
+    $(userLossesDisplay).text(userLosses);
+    $(userWinsDisplay).text(userWins);
+    $(scoreDisplay).text(score);
+}
+
+function checkGameStatus(userNum, compNum) {
+    if (userNum === compNum) {
+        userWins++;
+        initialize();
+    } else if (userNum <=compNum) {
+        $(scoreDisplay).text(userNum);
+    } else {
+        userLosses++;
+        initialize();
+    }
+}
+
+$(document).ready(function() {
+    
+    initialize();
 
     $(".crystal-group").on("click", "#crystal-one", function (){
         score += crystOne;
-        $(scoreDisplay).text(score);
+        checkGameStatus(score, randomNumber);
     }).on("click", "#crystal-two", function (){
         score += crystTwo;
-        $(scoreDisplay).text(score);
+        checkGameStatus(score, randomNumber);
     }).on("click", "#crystal-three", function (){
         score += crystThree;
-        $(scoreDisplay).text(score);
+        checkGameStatus(score, randomNumber);
     }).on("click", "#crystal-four", function (){
         score += crystFour;
-        $(scoreDisplay).text(score);
+        checkGameStatus(score, randomNumber);
     });
 
 });
