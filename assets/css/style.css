@@ -1,51 +1,223 @@
-.img-thumbnail {
-    border: 0 none;
-    box-shadow: none;
+/* Global Styles
+__________________________________________*/
+
+body {
+  background-color: #D8BFD8 !important; 
 }
+
+h1 {
+  color: #B8860B;
+  font-family: 'Yatra One', cursive;
+  padding-top: 10px;
+  font-size: 7vw;
+  text-shadow: 2px 2px #483D8B;
+}
+
+h2 {
+  font-family: 'Noto Sans', sans-serif;
+  padding-top: 10px;
+}
+
+p {
+  padding-bottom: 10px;
+  margin-bottom: 0;
+}
+
+input:focus, input:active, .btn:focus,.btn:active {
+  outline: none !important;
+  box-shadow: none;
+}
+
+/* Game Styles
+__________________________________________*/
+
+.img-thumbnail {
+  border: 0 none;
+  box-shadow: none;
+  background-color: transparent;
+  max-width: 75%;
+  padding: 0;
+}
+
 .container {
-    max-width: 960px;
-    margin: 0 auto;
-    text-align: center;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .modal-body{
-    text-align: left;
+  text-align: left;
 }
 
-@-webkit-keyframes hvr-pulse {
-    25% {
-      -webkit-transform: scale(1.1);
-      transform: scale(1.1);
-    }
-    75% {
-      -webkit-transform: scale(0.9);
-      transform: scale(0.9);
-    }
+.random-number {
+  max-width: 450px;
+  margin: 0 auto;
+  background-color: #e5d4e5;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+}
+
+.wins-losses {
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.wins, .losses {
+  max-width: 250px;
+  margin: 0 auto;
+  background-color: #e5d4e5;
+  border-radius: 25px;
+  margin-bottom: 20px;
+}
+
+.score {
+  max-width: 250px;
+  margin: 0 auto;
+  background-color: #e5d4e5;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+}
+
+.crystal-group {
+  margin: 0 auto;
+}
+
+/* Visual Effects
+__________________________________________*/
+
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.hvr-grow:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.img-thumbnail:active {
+  border: 2px solid #483D8B;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
+/* Victory Toast 
+__________________________________________*/
+#victoryToast {
+  visibility: hidden; 
+  min-width: 250px; 
+  margin-left: -125px; 
+  background-color: #5cb85c; 
+  color: #fff; 
+  text-align: center; 
+  border-radius: 2px; 
+  padding: 16px; 
+  position: fixed; 
+  z-index: 1; 
+  left: 50%; 
+  bottom: 30px; 
+}
+
+
+#victoryToast.show {
+  visibility: visible; 
+
+  -webkit-animation: fadein 0.5s;
+  animation: fadein 0.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+/* Defeat Toast 
+__________________________________________*/
+#defeatToast {
+  visibility: hidden; 
+  min-width: 250px; 
+  margin-left: -125px; 
+  background-color: #d9534f; 
+  color: #fff; 
+  text-align: center; 
+  border-radius: 2px; 
+  padding: 16px; 
+  position: fixed; 
+  z-index: 1; 
+  left: 50%; 
+  bottom: 30px; 
+}
+
+
+#defeatToast.show {
+  visibility: visible; 
+
+  -webkit-animation: fadein 0.5s;
+  animation: fadein 0.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+  /* Media Queries
+__________________________________________*/
+
+@media only screen and (max-width: 576px) { 
+  .img-thumbnail {
+    max-width: 75% !important;
+    padding: 0.25rem;
+  }  
+}
+
+@media only screen and (max-width: 1029px) { 
+  h1 {
+    font-size: 11vw;
+  }  
+}
+
+@media only screen and (max-width: 575px) {
+  .wins, .losses {
+    max-width: 150px;
+    margin: 0 auto;
   }
-  @keyframes hvr-pulse {
-    25% {
-      -webkit-transform: scale(1.1);
-      transform: scale(1.1);
-    }
-    75% {
-      -webkit-transform: scale(0.9);
-      transform: scale(0.9);
-    }
-  }
-  .hvr-pulse {
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  }
-  .hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active {
-    -webkit-animation-name: hvr-pulse;
-    animation-name: hvr-pulse;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-timing-function: linear;
-    animation-timing-function: linear;
-    -webkit-animation-iteration-count: infinite;
-    animation-iteration-count: infinite;
-  }
+}

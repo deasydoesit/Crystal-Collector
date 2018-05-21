@@ -12,6 +12,22 @@ var randomNumberDisplay = $("#random");
 var userWinsDisplay = $("#wins");
 var userLossesDisplay = $("#losses");
 var scoreDisplay = $("#score");
+var victoryToast = $("#victoryToast");
+var defeatToast = $("#defeatToast");
+
+function displayVictoryToast() {
+    $(victoryToast).toggleClass("show");
+    setTimeout( function() { 
+        $(victoryToast).toggleClass("show"); 
+    }, 3000);
+}
+
+function displayDefeatToast() {
+    $(defeatToast).toggleClass("show");
+    setTimeout( function() { 
+        $(defeatToast).toggleClass("show"); 
+    }, 3000);
+}
 
 function generateCrystalNums(num) {
     crystOne = Math.ceil(num / (Math.random() * 10));
@@ -40,11 +56,13 @@ function initialize(){
 function checkGameStatus(userNum, compNum) {
     if (userNum === compNum) {
         userWins++;
+        displayVictoryToast();
         initialize();
     } else if (userNum <=compNum) {
         $(scoreDisplay).text(userNum);
     } else {
         userLosses++;
+        displayDefeatToast();
         initialize();
     }
 }
