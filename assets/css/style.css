@@ -1,6 +1,5 @@
 /* Global Styles
 __________________________________________*/
-
 body {
   background-color: #D8BFD8 !important; 
 }
@@ -30,7 +29,6 @@ input:focus, input:active, .btn:focus,.btn:active {
 
 /* Game Styles
 __________________________________________*/
-
 .img-thumbnail {
   border: 0 none;
   box-shadow: none;
@@ -45,7 +43,7 @@ __________________________________________*/
   text-align: center;
 }
 
-.modal-body{
+.modal-body {
   text-align: left;
 }
 
@@ -72,6 +70,7 @@ __________________________________________*/
 }
 
 .score {
+  display: block;
   max-width: 250px;
   margin: 0 auto;
   background-color: #e5d4e5;
@@ -80,13 +79,49 @@ __________________________________________*/
   border-radius: 25px;
 }
 
+.win {
+  display: none;
+  max-width: 250px;
+  height: 90px;
+  margin: 0 auto;
+  color: #fff; 
+  background-color: #5cb85c;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+}
+
+.lose {
+  display: none;
+  max-width: 250px;
+  height: 90px;
+  margin: 0 auto;
+  color: #fff; 
+  background-color: #d9534f;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+}
+
+.show {
+  display: block !important; 
+}
+
+.hide {
+  display: none !important; 
+}
+
+.decision {
+  padding: 25px;
+}
+
 .crystal-group {
   margin: 0 auto;
 }
 
+
 /* Visual Effects
 __________________________________________*/
-
 .hvr-grow {
   display: inline-block;
   vertical-align: middle;
@@ -109,99 +144,8 @@ __________________________________________*/
   transition-duration: 0.3s;
 }
 
-/* Victory Toast 
-__________________________________________*/
-#victoryToast {
-  visibility: hidden; 
-  min-width: 250px; 
-  margin-left: -125px; 
-  background-color: #5cb85c; 
-  color: #fff; 
-  text-align: center; 
-  border-radius: 2px; 
-  padding: 16px; 
-  position: fixed; 
-  z-index: 1; 
-  left: 50%; 
-  bottom: 30px; 
-}
-
-
-#victoryToast.show {
-  visibility: visible; 
-
-  -webkit-animation: fadein 0.5s;
-  animation: fadein 0.5s;
-}
-
-@-webkit-keyframes fadein {
-  from {bottom: 0; opacity: 0;} 
-  to {bottom: 30px; opacity: 1;}
-}
-
-@keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
-}
-
-@-webkit-keyframes fadeout {
-  from {bottom: 30px; opacity: 1;} 
-  to {bottom: 0; opacity: 0;}
-}
-
-@keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
-}
-
-/* Defeat Toast 
-__________________________________________*/
-#defeatToast {
-  visibility: hidden; 
-  min-width: 250px; 
-  margin-left: -125px; 
-  background-color: #d9534f; 
-  color: #fff; 
-  text-align: center; 
-  border-radius: 2px; 
-  padding: 16px; 
-  position: fixed; 
-  z-index: 1; 
-  left: 50%; 
-  bottom: 30px; 
-}
-
-
-#defeatToast.show {
-  visibility: visible; 
-
-  -webkit-animation: fadein 0.5s;
-  animation: fadein 0.5s;
-}
-
-@-webkit-keyframes fadein {
-  from {bottom: 0; opacity: 0;} 
-  to {bottom: 30px; opacity: 1;}
-}
-
-@keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
-}
-
-@-webkit-keyframes fadeout {
-  from {bottom: 30px; opacity: 1;} 
-  to {bottom: 0; opacity: 0;}
-}
-
-@keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
-}
-
   /* Media Queries
 __________________________________________*/
-
 @media only screen and (max-width: 576px) { 
   .img-thumbnail {
     max-width: 75% !important;

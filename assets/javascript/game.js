@@ -2,6 +2,7 @@ var userWins = 0;
 var userLosses = 0;
 var score = 0;
 var randomNumber = 0;
+var isInputActive = true;
 
 var crystOne = 0;
 var crystTwo = 0;
@@ -16,24 +17,28 @@ var victoryToast = $("#victoryToast");
 var defeatToast = $("#defeatToast");
 
 function displayVictoryToast() {
-    $(victoryToast).toggleClass("show");
-    setTimeout( function() { 
-        $(victoryToast).toggleClass("show"); 
-    }, 3000);
+    if (isInputActive) {
+        isInputActive = false;
+        $("input").prop('disabled', true).removeClass("hvr-grow");
+        $(".score").removeClass("show").addClass("hide");
+        $(".win").removeClass("hide").addClass("show");
+    }
 }
 
 function displayDefeatToast() {
-    $(defeatToast).toggleClass("show");
-    setTimeout( function() { 
-        $(defeatToast).toggleClass("show"); 
-    }, 3000);
+    if (isInputActive) {
+        isInputActive = false;
+        $("input").prop('disabled', true).removeClass("hvr-grow");
+        $(".score").removeClass("show").addClass("hide");
+        $(".lose").removeClass("hide").addClass("show");
+    }
 }
 
 function generateCrystalNums(num) {
-    crystOne = Math.ceil(num / (Math.random() * 10));
-    crystTwo = Math.ceil(num / (Math.random() * 10));
-    crystThree = Math.ceil(num / (Math.random() * 10));
-    crystFour = Math.ceil(num / (Math.random() * 10));
+    crystOne = Math.ceil(Math.random() * 12);
+    crystTwo = Math.ceil(Math.random() * 12);
+    crystThree = Math.ceil(Math.random() * 12);
+    crystFour = Math.ceil(Math.random() * 12);
 }
 
 function initialize(){
@@ -51,6 +56,16 @@ function initialize(){
     $(userLossesDisplay).text(userLosses);
     $(userWinsDisplay).text(userWins);
     $(scoreDisplay).text(score);
+
+    setTimeout(function() {    
+        if (!isInputActive) {
+            isInputActive = true;
+            $(".score").removeClass("hide").addClass("show");
+            $(".lose").removeClass("show").addClass("hide");
+            $(".win").removeClass("show").addClass("hide");
+            $("input").prop('disabled', false).addClass("hvr-grow");
+        }
+    }, 3000);
 }
 
 function checkGameStatus(userNum, compNum) {
@@ -68,8 +83,6 @@ function checkGameStatus(userNum, compNum) {
 }
 
 $(document).ready(function() {
-    
-    initialize();
 
     $(".crystal-group").on("click", "#crystal-one", function (){
         score += crystOne;
@@ -85,4 +98,5 @@ $(document).ready(function() {
         checkGameStatus(score, randomNumber);
     });
 
+    initialize();
 });
